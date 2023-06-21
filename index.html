@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notion-like Survey Form</title>
+    <style>
+        /* Define default light theme */
+        :root {
+            --bg-color: #f5f5f5;
+            --form-bg-color: #ffffff;
+            --text-color: #000000;
+            --input-bg-color: #ffffff;
+            --button-color: #007bff;
+            --button-hover-color: #0056b3;
+        }
+
+        /* Define dark theme */
+        body.dark-mode {
+            --bg-color: #222222;
+            --form-bg-color: #333333;
+            --text-color: #f0f0f0;
+            --input-bg-color: #444444;
+            --button-color: #008CBA;
+            --button-hover-color: #007aa3;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 50px;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        .form-container {
+            background-color: var(--form-bg-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            transition: background-color 0.5s;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: var(--input-bg-color);
+            color: var(--text-color);
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        .form-group button {
+            background-color: var(--button-color);
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.5s;
+        }
+
+        .form-group button:hover {
+            background-color: var(--button-hover-color);
+        }
+
+        /* Dark mode toggle switch */
+        .theme-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .theme-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>📝 Survey Form</h1>
+        <label class="theme-switch">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider"></span>
+        </label>
+        <form>
+            <!-- Your form fields go here -->
+            <br>
+            <div class="form-group">
+                <label for="name">👤 Name</label>
+                <input type="text" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="email">📧 Email</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="feedback">📝 Feedback</label>
+                <textarea id="feedback" name="feedback"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="rating">⭐ Rating</label>
+                <select id="rating" name="rating">
+                    <option value="">Select...</option>
+                    <option value="1">1 - Poor</option>
+                    <option value="2">2 - Fair</option>
+                    <option value="3">3 - Good</option>
+                    <option value="4">4 - Very Good</option>
+                    <option value="5">5 - Excellent</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit">Submit 🚀</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('theme-toggle').addEventListener('change', function() {
+            document.body.classList.toggle('dark-mode');
+        });
+    </script>
+</body>
+</html>
